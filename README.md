@@ -1,7 +1,7 @@
 # Teste_ROS2
 ## 🤖 Controle de Robô UR10 com ROS 2
 
-Este repositório descreve o processo de configuração, conexão e execução de movimentos em um robô UR10 a partir do driver da UR, utilizando o ur_robot_driver e um script personalizado em Python feita pela equipe do Iris Lab para enviar trajetórias ao robô.
+Este repositório descreve o processo de configuração, conexão e execução de movimentos em um robô UR10 a partir do driver da UR em ROS2, utilizando o ur_robot_driver e um script personalizado em Python feita pela equipe do Iris Lab para enviar trajetórias ao robô.
 
 ## 🔌 1. Conexão com o robô
 ### Conecte o cabo Ethernet do robô ao notebook
@@ -63,7 +63,7 @@ initial_joint_controller:=joint_trajectory_controller
 ```
 ## 📌 Observações:
 
-* No teach pendant:
+ No teach pendant:
  * Coloque o robô em HOME
  * Clique em PLAY
 
@@ -85,35 +85,37 @@ cd ~/workspaces/ur_gazebo/src
 ros2 pkg create --build-type ament_python meu_projeto_ur --dependencies rclpy trajectory_msgs
 ```
 
-Estrutura:
+### Estrutura do projeto criada:
+Insira o código em Python dentro da árvore do programa criada. Aqui no exemplo inserimos o script.py.
+```
 meu_projeto_ur/
  └── meu_projeto_ur/
      └── script.py
+```
 Permissão de execução:
-chmod +x my_robot.py
+```bash
+chmod +x script.py
+```
 Configurando o setup.py
+```
 entry_points={
     'console_scripts': [
         'envia_trajetoria = meu_projeto_ur.script:main',
     ],
 },
+```
 Compilando:
 ```bash
 cd ~/workspaces/ur_gazebo
 colcon build --packages-select meu_projeto_ur
 source install/setup.bash
 ```
-Executando o script:
-
-⚠️ Antes:
-
-Driver do robô rodando
-Teach pendant em PLAY
+### Executando o script:
+*Um terminal deve estar rodando o driver do robô e estar apertado o play no teach pendant.
+* No outro terminal rodamos o script.
+```bash
 ros2 run meu_projeto_ur envia_trajetoria
-🔁 7. Fluxo completo de execução
-Configurar rede
-Rodar driver (ur_control.launch.py)
-Dar PLAY no robô
-Rodar:
-Teste padrão (test_joint_trajectory_controller) ou
-Script próprio (envia_trajetoria)
+```
+
+## Vídeo do robô movendo via ROS2
+[![Ver vídeo](https://img.youtube.com/vi/1SLCnnARI1k/0.jpg)](https://youtube.com/shorts/1SLCnnARI1k)
