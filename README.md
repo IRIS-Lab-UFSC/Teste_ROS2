@@ -6,33 +6,34 @@ Este repositório descreve o processo de configuração, conexão e execução d
 🔌 1. Conexão com o robô
 Conecte o cabo Ethernet do robô ao notebook
 Configure a rede cabeada (IPv4):
-'''bash
+
+```bash
 IP: 192.168.0.XX
 Máscara: 255.255.255.0
 Gateway: 0.0.0.0
-'''
+```
 Verifique seu IP:
-'''bash
+```bash
 ip a
-'''
+```
 ou
-'''bash
+```bash
 hostname -I
-'''
+```
 Teste a conexão com o robô:
-'''bash
+```bash
 ping 192.168.0.10
-'''
+```
 Verifique a porta de comunicação:
-'''bash
+```bash
 nc -zv 192.168.0.10 50002
-'''
+```
 
 Se houver conflito na porta:
-'''bash
+```bash
 sudo fuser -k 50002/tcp
 sudo lsof -i :50002
-'''
+```
 Desative o firewall:
 sudo ufw disable
 ⚙️ 2. Configuração inicial do workspace
