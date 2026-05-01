@@ -3,6 +3,7 @@
 
 Este repositório descreve o processo de configuração, conexão e execução de movimentos em um robô UR10 a partir do driver da UR em ROS2, utilizando o ur_robot_driver e um script personalizado em Python feita pela equipe do Iris Lab para enviar trajetórias ao robô.
 
+
 ## 🔌 1. Conexão com o robô
 ### Conecte o cabo Ethernet do robô ao notebook
 Configure a rede cabeada (IPv4):
@@ -78,6 +79,10 @@ ros2 launch ur_robot_driver test_joint_trajectory_controller.launch.py
 O robô deve iniciar movimento em até ~10 segundos.
 
 Após o teste inicial com o código acima da própria UR, a equipe do IrisLab desenvolveu seu próprio código em Python.
+
+## Vídeo do robô movendo via ROS2
+[![Ver vídeo](https://img.youtube.com/vi/1SLCnnARI1k/0.jpg)](https://youtube.com/shorts/1SLCnnARI1k)
+
 ## 🐍 6. Script personalizado (envia_trajetoria)
 Criando o pacote:
 ```bash
@@ -111,11 +116,8 @@ colcon build --packages-select meu_projeto_ur
 source install/setup.bash
 ```
 ### Executando o script:
-*Um terminal deve estar rodando o driver do robô e estar apertado o play no teach pendant.
+* Um terminal deve estar rodando o driver do robô e estar apertado o play no teach pendant.
 * No outro terminal rodamos o script.
 ```bash
 ros2 run meu_projeto_ur envia_trajetoria
 ```
-
-## Vídeo do robô movendo via ROS2
-[![Ver vídeo](https://img.youtube.com/vi/1SLCnnARI1k/0.jpg)](https://youtube.com/shorts/1SLCnnARI1k)
