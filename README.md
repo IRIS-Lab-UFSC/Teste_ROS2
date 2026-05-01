@@ -1,27 +1,38 @@
 # Teste_ROS2
 🤖 Controle de Robô UR10 com ROS 2
 
-Este repositório descreve o processo de configuração, conexão e execução de movimentos em um robô UR10 utilizando o ur_robot_driver e um script personalizado em Python.
+Este repositório descreve o processo de configuração, conexão e execução de movimentos em um robô UR10 utilizando o ur_robot_driver e um script personalizado em Python feita pela equipe do Iris Lab.
 
 🔌 1. Conexão com o robô
 Conecte o cabo Ethernet do robô ao notebook
 Configure a rede cabeada (IPv4):
+'''bash
 IP: 192.168.0.XX
 Máscara: 255.255.255.0
 Gateway: 0.0.0.0
+'''
 Verifique seu IP:
+'''bash
 ip a
-# ou
+'''
+ou
+'''bash
 hostname -I
+'''
 Teste a conexão com o robô:
+'''bash
 ping 192.168.0.10
+'''
 Verifique a porta de comunicação:
+'''bash
 nc -zv 192.168.0.10 50002
+'''
 
-Se houver conflito:
-
+Se houver conflito na porta:
+'''bash
 sudo fuser -k 50002/tcp
 sudo lsof -i :50002
+'''
 Desative o firewall:
 sudo ufw disable
 ⚙️ 2. Configuração inicial do workspace
